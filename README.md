@@ -90,7 +90,7 @@ We evaluate different join strategies on the **employees.csv** and **departments
 
 - **Broadcast Join (RDD API):**  
   The small `departments` dataset is broadcasted to all executors and joined with `employees`.  
-  📸 Example results (first 50 and 100 rows):  
+  📸 Example results (first 100 rows):  
 
   <p align="center">
     <img src="images/broadcast_join_50.png" width="49%">
@@ -99,7 +99,7 @@ We evaluate different join strategies on the **employees.csv** and **departments
 
 - **Repartition Join (RDD API):**  
   Both datasets are repartitioned by department id, grouped with `cogroup`, and joined.  
-  📸 Example results (first 50 and 100 rows):  
+  📸 Example results (first 100 rows):  
 
   <p align="center">
     <img src="images/repartition_join_50.png" width="44%">
