@@ -56,6 +56,20 @@ hadoop fs -mkdir -p /home/user/csv_files
 hadoop fs -put warc.csv wat.csv wet.csv employees.csv departments.csv /home/user/csv_files
 ```
 
+---
+
+## 🔄 CSV → Parquet Conversion  
+
+Run the following to convert CSV files into Parquet format and store them in HDFS:  
+
+```bash
+spark-submit data_ingestion/warc_parquet.py
+spark-submit data_ingestion/wat_parquet.py
+spark-submit data_ingestion/wet_parquet.py
+spark-submit data_ingestion/employees_parquet.py
+spark-submit data_ingestion/departments_parquet.py
+```
+
 📸 Uploaded CSV files (**Hadoop HDFS**):  
 ![CSV files in HDFS](images/csv_files.png)  
 
@@ -74,14 +88,28 @@ We answer five main queries using both **RDD API** and **Spark SQL (CSV & Parque
 - **Q4:** For each server, compute the **average WARC content length** and the **average WAT metadata length**, then return the top 5 servers by average WARC content length.  
 - **Q5:** Find the **most popular target URL**, i.e. the URL that appears most often inside the HTML DOM of other records.  
 
+### 🚀 Usage  
+
+**RDD example:**  
+```bash
+spark-submit queries/rdd_q1.py
+```  
 📸 RDD — **Hadoop Job History UI**:  
 ![Execution RDD](images/exec_rdd.png)  
 
-📸 Spark SQL on CSV — **Hadoop Job History UI**:  
-![Execution SQL CSV](images/exec_sql_csv.png)  
-
+**Spark SQL (Parquet):**  
+```bash
+spark-submit queries/df_q1.py
+```  
 📸 Spark SQL on Parquet — **Hadoop Job History UI**:  
 ![Execution SQL Parquet](images/exec_sql_parquet.png)  
+
+**Spark SQL (CSV):**  
+```bash
+spark-submit queries/df_csv_q1.py
+```  
+📸 Spark SQL on CSV — **Hadoop Job History UI**:  
+![Execution SQL CSV](images/exec_sql_csv.png)  
 
 ---
 
@@ -89,8 +117,11 @@ We answer five main queries using both **RDD API** and **Spark SQL (CSV & Parque
 
 We evaluate different join strategies on the **employees.csv** and **departments.csv** datasets:  
 
-- **Broadcast Join (RDD API):**  
-  The small `departments` dataset is broadcasted to all executors and joined with `employees`.  
+- **Broadcast Join (RDD API):** The small `departments` dataset is broadcasted to all executors and joined with `employees`.  
+
+  ```bash
+  spark-submit joins/joins_broadcast_rdd.py
+  ```  
   📸 Example results (first 50 and 100 rows):  
 
   <p align="center">
@@ -98,8 +129,11 @@ We evaluate different join strategies on the **employees.csv** and **departments
     <img src="images/broadcast_join_100.png" width="49%">
   </p>
 
-- **Repartition Join (RDD API):**  
-  Both datasets are repartitioned by department id, grouped with `cogroup`, and joined.  
+- **Repartition Join (RDD API):** Both datasets are repartitioned by department id, grouped with `cogroup`, and joined.  
+
+  ```bash
+  spark-submit joins/joins_repartition_rdd.py
+  ```  
   📸 Example results (first 50 and 100 rows):  
 
   <p align="center">
@@ -107,8 +141,12 @@ We evaluate different join strategies on the **employees.csv** and **departments
     <img src="images/repartition_join_100.png" width="49%" height="400px">
   </p>
 
-- **Catalyst Optimizer (Spark SQL):**  
-  Execution times are compared with broadcast threshold **enabled** (BroadcastHashJoin) vs **disabled** (SortMergeJoin).  
+- **Catalyst Optimizer (Spark SQL):** Compare execution times with broadcast threshold **enabled** (BroadcastHashJoin) vs **disabled** (SortMergeJoin).  
+
+  ```bash
+  spark-submit joins/join_broadcast_vs_sortmerge.py Y   # disable broadcast
+  spark-submit joins/join_broadcast_vs_sortmerge.py N   # enable
+  ```  
 
   📸 Physical plan (Catalyst enabled):  
   *Performs a series of joins between employees and departments using the Broadcast HashJoin method to optimize performance, while applying filters and data size restrictions to reduce the processing overhead.*  
