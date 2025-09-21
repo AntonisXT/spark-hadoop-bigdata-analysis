@@ -74,13 +74,13 @@ We answer five main queries using both **RDD API** and **Spark SQL (CSV & Parque
 - **Q4:** For each server, compute the **average WARC content length** and the **average WAT metadata length**, then return the top 5 servers by average WARC content length.  
 - **Q5:** Find the **most popular target URL**, i.e. the URL that appears most often inside the HTML DOM of other records.  
 
-📸 Example execution (RDD) — **Hadoop Job History UI**:  
+📸 RDD — **Hadoop Job History UI**:  
 ![Execution RDD](images/exec_rdd.png)  
 
-📸 Example execution (Spark SQL on CSV) — **Hadoop Job History UI**:  
+📸 Spark SQL on CSV — **Hadoop Job History UI**:  
 ![Execution SQL CSV](images/exec_sql_csv.png)  
 
-📸 Example execution (Spark SQL on Parquet) — **Hadoop Job History UI**:  
+📸 Spark SQL on Parquet — **Hadoop Job History UI**:  
 ![Execution SQL Parquet](images/exec_sql_parquet.png)  
 
 ---
