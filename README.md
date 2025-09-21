@@ -5,7 +5,7 @@
 This project was developed as part of an **academic assignment** on Big Data systems.  
 The goal was to implement and evaluate data processing workflows using **Apache Hadoop** and **Apache Spark** in a distributed environment.  
 
-The tasks required us to:  
+The assignment required implementing:  
 - Set up and use Hadoop & Spark on **virtual machines (VMs)** with HDFS.  
 - Upload and transform datasets (CSV → Parquet).  
 - Implement queries using both **RDD API** and **Spark SQL / DataFrames** (on CSV and Parquet).  
@@ -54,7 +54,7 @@ pip install -r requirements.txt
 ```
 
 ### Dataset  
-We use a subset of the **Common Crawl** dataset (WARC, WAT, WET files) plus small **employees/departments** CSV files.  
+The project uses a subset of the **Common Crawl** dataset (WARC, WAT, WET files) plus small **employees/departments** CSV files.  
 
 Download and load into HDFS:  
 
@@ -90,7 +90,7 @@ spark-submit data_ingestion/departments_parquet.py
 
 ## 🔎 Queries (Part 1)  
 
-We answer five main queries using both **RDD API** and **Spark SQL (CSV & Parquet)**:  
+The project answers five main queries using both **RDD API** and **Spark SQL (CSV & Parquet)**:  
 
 - **Q1:** For the time range between *2017-03-22 22:00 and 2017-03-22 23:00*, find the **top 5 most used servers**, in descending order of usage.  
 - **Q2:** For the target URL `http://1001.ru/articles/post/ai-da-tumin-443`, find the **metadata length** (from WAT) and the **HTML DOM size** (from WARC).  
@@ -125,14 +125,14 @@ spark-submit queries/df_csv_q1.py
 
 ## 🔗 Joins (Part 2)  
 
-We evaluate different join strategies on the **employees.csv** and **departments.csv** datasets:  
+The project evaluates different join strategies on the **employees.csv** and **departments.csv** datasets:  
 
 - **Broadcast Join (RDD API):** The small `departments` dataset is broadcasted to all executors and joined with `employees`.  
 
   ```bash
   spark-submit joins/joins_broadcast_rdd.py
   ```  
-  📸 Example results (first 50 and 100 rows):  
+  📸 Example results (first 100 rows):  
 
   <p align="center">
     <img src="images/broadcast_join_50.png" width="49%">
@@ -144,7 +144,7 @@ We evaluate different join strategies on the **employees.csv** and **departments
   ```bash
   spark-submit joins/joins_repartition_rdd.py
   ```  
-  📸 Example results (first 50 and 100 rows):  
+  📸 Example results (first 100 rows):  
 
   <p align="center">
     <img src="images/repartition_join_50.png" width="49%" height="400px">
@@ -208,4 +208,152 @@ We evaluate different join strategies on the **employees.csv** and **departments
 ---
 
 ## 📜 License  
-MIT License.  
+MIT License.
+
+---
+
+## 🖥️ Environment Setup (How this was installed)
+
+The project runs on **Ubuntu-based VMs** with **Java 11**, **Hadoop 3.3.x**, **Spark 3.5.x**, and **HDFS**.  
+Below are the exact high-level steps I used to set it up.
+
+### 1) Install Java
+```bash
+sudo apt update
+sudo apt install -y openjdk-11-jdk
+java -version
+```
+
+### 2) Install Hadoop (3.3.x)
+Download & extract Hadoop, then set environment variables:
+```bash
+sudo adduser hadoop --disabled-password --gecos ""
+sudo usermod -aG sudo hadoop
+su - hadoop
+
+wget https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+tar -xzf hadoop-3.3.6.tar.gz
+mv hadoop-3.3.6 ~/hadoop
+
+echo 'export HADOOP_HOME=$HOME/hadoop' >> ~/.bashrc
+echo 'export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin' >> ~/.bashrc
+echo 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Configure **HDFS** to use `hdfs://master:9000` (adjust the hostname if needed):
+
+`$HADOOP_HOME/etc/hadoop/core-site.xml`
+```xml
+<configuration>
+  <property>
+    <name>fs.defaultFS</name>
+    <value>hdfs://master:9000</value>
+  </property>
+</configuration>
+```
+
+`$HADOOP_HOME/etc/hadoop/hdfs-site.xml`
+```xml
+<configuration>
+  <property>
+    <name>dfs.replication</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:///home/hadoop/hdfs/namenode</value>
+  </property>
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:///home/hadoop/hdfs/datanode</value>
+  </property>
+</configuration>
+```
+
+Format NameNode and start HDFS:
+```bash
+hdfs namenode -format
+start-dfs.sh
+# (Optional) Web UI: NameNode http://master:9870
+```
+
+Create HDFS folders and upload data:
+```bash
+hdfs dfs -mkdir -p /home/user/csv_files
+hdfs dfs -put warc.csv wat.csv wet.csv employees.csv departments.csv /home/user/csv_files
+hdfs dfs -ls /home/user/csv_files
+```
+
+### 3) Enable YARN & Job History
+`$HADOOP_HOME/etc/hadoop/mapred-site.xml`
+```xml
+<configuration>
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>yarn</value>
+  </property>
+  <property>
+    <name>mapreduce.jobhistory.address</name>
+    <value>master:10020</value>
+  </property>
+  <property>
+    <name>mapreduce.jobhistory.webapp.address</name>
+    <value>master:19888</value>
+  </property>
+</configuration>
+```
+
+`$HADOOP_HOME/etc/hadoop/yarn-site.xml`
+```xml
+<configuration>
+  <property>
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
+  </property>
+</configuration>
+```
+
+Start YARN & Job History:
+```bash
+start-yarn.sh
+mr-jobhistory-daemon.sh start historyserver
+# Web UIs: ResourceManager http://master:8088  |  JobHistory http://master:19888
+```
+
+### 4) Install Spark (3.5.x)
+```bash
+wget https://downloads.apache.org/spark/spark-3.5.1/spark-3.5.1-bin-hadoop3.tgz
+tar -xzf spark-3.5.1-bin-hadoop3.tgz
+mv spark-3.5.1-bin-hadoop3 ~/spark
+
+echo 'export SPARK_HOME=$HOME/spark' >> ~/.bashrc
+echo 'export PATH=$PATH:$SPARK_HOME/bin' >> ~/.bashrc
+source ~/.bashrc
+```
+
+(Optional) Spark defaults (YARN mode):
+`$SPARK_HOME/conf/spark-defaults.conf` (create if missing)
+```properties
+spark.master                     yarn
+spark.driver.memory              2g
+spark.executor.memory            2g
+spark.ui.port                    4040
+spark.sql.shuffle.partitions     8
+```
+
+### 5) Python dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 6) Run examples
+Run conversions (CSV → Parquet) and queries:
+```bash
+spark-submit data_ingestion/warc_parquet.py
+spark-submit queries/df_q1.py
+spark-submit queries/df_csv_q1.py
+spark-submit queries/rdd_q1.py
+```
+
+> The **HDFS screenshots** in the README come from **Hadoop HDFS** web UI, and the **execution screenshots** come from the **Hadoop Job History UI**.
