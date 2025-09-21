@@ -25,7 +25,6 @@ spark-hadoop-bigdata-analysis/
 ├── images/                  # Screenshots & charts for README
 ├── README.md
 ├── requirements.txt
-└── .gitignore
 ```
 
 ---
