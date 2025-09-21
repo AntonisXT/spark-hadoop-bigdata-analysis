@@ -111,11 +111,13 @@ We evaluate different join strategies on the **employees.csv** and **departments
   Execution times are compared with broadcast threshold **enabled** (BroadcastHashJoin) vs **disabled** (SortMergeJoin).  
 
   📸 Physical plan (Catalyst enabled):
-  *Performs a series of joins between employees and departments using the Broadcast HashJoin method to optimize performance, while applying filters and data size restrictions to reduce the processing overhead.* 
+  *Performs a series of joins between employees and departments using the Broadcast HashJoin method to optimize performance, while applying filters and data size restrictions to reduce the processing overhead.*
+  
   ![Catalyst Enabled Plan](images/catalyst_enabled.png)   
 
   📸 Physical plan (Catalyst disabled):
-  *Performs joins between employees and departments using the Sort-Merge Join method, which requires data sorting. For this specific query and dataset, it is less efficient compared to the Broadcast HashJoin chosen    by Catalyst.* 
+  *Performs joins between employees and departments using the Sort-Merge Join method, which requires data sorting. For this specific query and dataset, it is less efficient compared to the Broadcast HashJoin chosen    by Catalyst.*
+  
   ![Catalyst Disabled Plan](images/catalyst_disabled.png)   
 
 ---
