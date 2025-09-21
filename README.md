@@ -32,16 +32,29 @@ spark-hadoop-bigdata-analysis/
 
 ## ⚙️ Setup  
 
-### Requirements  
-- **Virtual Machine** with Hadoop & Spark installed  
-- Hadoop ≥ 3.3  
-- Spark ≥ 3.5  
-- HDFS accessible at `hdfs://master:9000`  
-- Python 3.8+  
-- Python packages:  
-  ```bash
-  pip install pyspark matplotlib numpy
-  ```
+### Environment  
+The project was implemented and tested on **Ubuntu-based Virtual Machines** configured with:  
+- **Java 11**  
+- **Hadoop 3.3.x** (HDFS + YARN + Job History Server)  
+- **Spark 3.5.x** (running in YARN mode)  
+- **Python 3.8+**  
+
+HDFS was configured with `fs.defaultFS = hdfs://master:9000`, and data was uploaded to `/home/user/csv_files`.  
+The **HDFS file listings** shown in screenshots come from the **Hadoop NameNode Web UI**, and the **execution logs** from the **Hadoop Job History UI**.  
+
+### Python Dependencies  
+Python requirements are listed in `requirements.txt`:  
+
+```txt
+pyspark>=3.5.0
+matplotlib>=3.7.0
+numpy>=1.24.0
+```  
+
+Install them with:  
+```bash
+pip install -r requirements.txt
+```
 
 ### Dataset  
 We use a subset of the **Common Crawl** dataset (WARC, WAT, WET files) plus small **employees/departments** CSV files.  
