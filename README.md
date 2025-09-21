@@ -24,6 +24,7 @@ spark-hadoop-bigdata-analysis/
 ├── visualizations/          # Execution time plots
 ├── images/                  # Screenshots & charts for README
 ├── README.md
+├── output.md
 └── requirements.txt
 ```
 
