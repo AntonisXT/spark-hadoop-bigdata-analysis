@@ -24,7 +24,7 @@ spark-hadoop-bigdata-analysis/
 ├── visualizations/          # Execution time plots
 ├── images/                  # Screenshots & charts for README
 ├── README.md
-├── requirements.txt
+└── requirements.txt
 ```
 
 ---
@@ -92,18 +92,18 @@ We evaluate different join strategies on the **employees.csv** and **departments
   The small `departments` dataset is broadcasted to all executors and joined with `employees`.  
   📸 Example results (first 50 and 100 rows):  
 
-  <p align="center">
-    <img src="images/broadcast_join_50.png" width="49%">
-    <img src="images/broadcast_join_100.png" width="49%">
+  <p align="center" style="line-height:0;">
+    <img src="images/broadcast_join_50.png" height="380" style="vertical-align:top; margin-right:0.5%;">
+    <img src="images/broadcast_join_100.png" height="380" style="vertical-align:top;">
   </p>
 
 - **Repartition Join (RDD API):**  
   Both datasets are repartitioned by department id, grouped with `cogroup`, and joined.  
   📸 Example results (first 50 and 100 rows):  
 
-  <p align="center">
-    <img src="images/repartition_join_50.png" width="49%">
-    <img src="images/repartition_join_100.png" width="49%">
+  <p align="center" style="line-height:0;">
+    <img src="images/repartition_join_50.png" height="380" style="vertical-align:top; margin-right:0.5%;">
+    <img src="images/repartition_join_100.png" height="380" style="vertical-align:top;">
   </p>
 
 - **Catalyst Optimizer (Spark SQL):**  
