@@ -102,7 +102,7 @@ We evaluate different join strategies on the **employees.csv** and **departments
   📸 Example results (first 50 and 100 rows):  
 
   <p align="center">
-    <img src="images/repartition_join_50.png" width="49%">
+    <img src="images/repartition_join_50.png" width="43%">
     <img src="images/repartition_join_100.png" width="49%">
   </p>
 
