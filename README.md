@@ -24,7 +24,8 @@ spark-hadoop-bigdata-analysis/
 ├── visualizations/          # Execution time plots
 ├── images/                  # Screenshots & charts for README
 ├── README.md
-└── requirements.txt
+├── requirements.txt
+└── .gitignore
 ```
 
 ---
@@ -93,8 +94,8 @@ We evaluate different join strategies on the **employees.csv** and **departments
   📸 Example results (first 50 and 100 rows):  
 
   <p align="center" style="line-height:0;">
-    <img src="images/broadcast_join_50.png" height="380" style="vertical-align:top; margin-right:0.5%;">
-    <img src="images/broadcast_join_100.png" height="380" style="vertical-align:top;">
+    <img src="images/broadcast_join_50.png" style="vertical-align:top; margin-right:0.5%;">
+    <img src="images/broadcast_join_100.png" style="vertical-align:top;">
   </p>
 
 - **Repartition Join (RDD API):**  
@@ -102,7 +103,7 @@ We evaluate different join strategies on the **employees.csv** and **departments
   📸 Example results (first 50 and 100 rows):  
 
   <p align="center" style="line-height:0;">
-    <img src="images/repartition_join_50.png" height="380" style="vertical-align:top; margin-right:0.5%;">
+    <img src="images/repartition_join_50.png" style="vertical-align:top; margin-right:0.5%;">
     <img src="images/repartition_join_100.png" height="380" style="vertical-align:top;">
   </p>
 
