@@ -56,10 +56,10 @@ hadoop fs -mkdir -p /home/user/csv_files
 hadoop fs -put warc.csv wat.csv wet.csv employees.csv departments.csv /home/user/csv_files
 ```
 
-📸 Uploaded CSV files:  
+📸 Uploaded CSV files (**Hadoop HDFS**):  
 ![CSV files in HDFS](images/csv_files.png)  
 
-📸 Converted Parquet files:  
+📸 Converted Parquet files (**Hadoop HDFS**):  
 ![Parquet files in HDFS](images/parquet_files.png)  
 
 ---
@@ -74,13 +74,13 @@ We answer five main queries using both **RDD API** and **Spark SQL (CSV & Parque
 - **Q4:** For each server, compute the **average WARC content length** and the **average WAT metadata length**, then return the top 5 servers by average WARC content length.  
 - **Q5:** Find the **most popular target URL**, i.e. the URL that appears most often inside the HTML DOM of other records.  
 
-📸 Example execution (RDD):  
+📸 Example execution (RDD) — **Hadoop Job History UI**:  
 ![Execution RDD](images/exec_rdd.png)  
 
-📸 Example execution (Spark SQL on CSV):  
+📸 Example execution (Spark SQL on CSV) — **Hadoop Job History UI**:  
 ![Execution SQL CSV](images/exec_sql_csv.png)  
 
-📸 Example execution (Spark SQL on Parquet):  
+📸 Example execution (Spark SQL on Parquet) — **Hadoop Job History UI**:  
 ![Execution SQL Parquet](images/exec_sql_parquet.png)  
 
 ---
@@ -91,7 +91,7 @@ We evaluate different join strategies on the **employees.csv** and **departments
 
 - **Broadcast Join (RDD API):**  
   The small `departments` dataset is broadcasted to all executors and joined with `employees`.  
-  📸 Example results (first 100 rows):  
+  📸 Example results (first 50 and 100 rows):  
 
   <p align="center">
     <img src="images/broadcast_join_50.png" width="49%">
@@ -100,11 +100,11 @@ We evaluate different join strategies on the **employees.csv** and **departments
 
 - **Repartition Join (RDD API):**  
   Both datasets are repartitioned by department id, grouped with `cogroup`, and joined.  
-  📸 Example results (first 100 rows):  
+  📸 Example results (first 50 and 100 rows):  
 
   <p align="center">
-    <img src="images/repartition_join_50.png" width="49%">
-    <img src="images/repartition_join_100.png" width="49%">
+    <img src="images/repartition_join_50.png" width="49%" height="400px">
+    <img src="images/repartition_join_100.png" width="49%" height="400px">
   </p>
 
 - **Catalyst Optimizer (Spark SQL):**  
