@@ -39,9 +39,6 @@ The project was implemented and tested on **Ubuntu-based Virtual Machines** conf
 - **Spark 3.5.x** (running in YARN mode)  
 - **Python 3.8+**  
 
-HDFS was configured with `fs.defaultFS = hdfs://master:9000`, and data was uploaded to `/home/user/csv_files`.  
-The **HDFS file listings** shown in screenshots come from the **Hadoop NameNode Web UI**, and the **execution logs** from the **Hadoop Job History UI**.  
-
 ### Python Dependencies  
 Python requirements are listed in `requirements.txt`:  
 
