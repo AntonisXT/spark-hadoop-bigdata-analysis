@@ -88,11 +88,17 @@ spark-submit data_ingestion/employees_parquet.py
 spark-submit data_ingestion/departments_parquet.py
 ```
 
-📸 Uploaded CSV files (HDFS):  
-![CSV files in HDFS](images/csv_files.png)
+<p align="center">
+  <img src="images/csv_files.png" width="80%">
+  <br>
+  <em>Uploaded CSV files in HDFS.</em>
+</p>
 
-📸 Converted Parquet files (HDFS):  
-![Parquet files in HDFS](images/parquet_files.png)
+<p align="center">
+  <img src="images/parquet_files.png" width="80%">
+  <br>
+  <em>Converted Parquet files stored in HDFS.</em>
+</p>
 
 ---
 
@@ -116,22 +122,31 @@ The project implements **five analytical queries**, each executed using **RDD AP
 ```bash
 spark-submit queries/rdd_q1.py
 ```
-📸 RDD Execution (Hadoop Job History UI):  
-![Execution RDD](images/exec_rdd.png)
+<p align="center">
+  <img src="images/exec_rdd.png" width="80%">
+  <br>
+  <em>RDD Execution shown in Hadoop Job History UI.</em>
+</p>
 
 **Spark SQL (Parquet):**
 ```bash
 spark-submit queries/df_q1.py
 ```
-📸 Spark SQL on Parquet:  
-![Execution SQL Parquet](images/exec_sql_parquet.png)
+<p align="center">
+  <img src="images/exec_sql_parquet.png" width="80%">
+  <br>
+  <em>Execution of Spark SQL on Parquet.</em>
+</p>
 
 **Spark SQL (CSV):**
 ```bash
 spark-submit queries/df_csv_q1.py
 ```
-📸 Spark SQL on CSV:  
-![Execution SQL CSV](images/exec_sql_csv.png)
+<p align="center">
+  <img src="images/exec_sql_csv.png" width="80%">
+  <br>
+  <em>Execution of Spark SQL on CSV.</em>
+</p>
 
 ---
 
@@ -145,8 +160,10 @@ Broadcasts the small `departments` dataset to all executors for efficient join.
 spark-submit joins/joins_broadcast_rdd.py
 ```
 <p align="center">
-  <img src="images/broadcast_join_50.png" width="49%">
-  <img src="images/broadcast_join_100.png" width="49%">
+  <img src="images/broadcast_join_50.png" width="48%" style="margin:4px; border-radius:8px;">
+  <img src="images/broadcast_join_100.png" width="48%" style="margin:4px; border-radius:8px;">
+  <br>
+  <em>Broadcast join results for 50 and 100 rows.</em>
 </p>
 
 ### 🔸 Repartition Join (RDD API)
@@ -155,8 +172,10 @@ Repartitions both datasets by department ID and joins using `cogroup`.
 spark-submit joins/joins_repartition_rdd.py
 ```
 <p align="center">
-  <img src="images/repartition_join_50.png" width="49%" height="400px">
-  <img src="images/repartition_join_100.png" width="49%" height="400px">
+  <img src="images/repartition_join_50.png" width="48%" style="margin:4px; border-radius:8px;">
+  <img src="images/repartition_join_100.png" width="48%" style="margin:4px; border-radius:8px;">
+  <br>
+  <em>Repartition join results for 50 and 100 rows.</em>
 </p>
 
 ### 🔸 Catalyst Optimizer (Spark SQL)
@@ -167,11 +186,17 @@ spark-submit joins/join_broadcast_vs_sortmerge.py Y   # Disable broadcast
 spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 ```
 
-📸 Catalyst enabled (BroadcastHashJoin):  
-![Catalyst Enabled Plan](images/catalyst_enabled.png)
+<p align="center">
+  <img src="images/catalyst_enabled.png" width="80%">
+  <br>
+  <em>Execution plan with Catalyst optimizer enabled (Broadcast Hash Join).</em>
+</p>
 
-📸 Catalyst disabled (SortMergeJoin):  
-![Catalyst Disabled Plan](images/catalyst_disabled.png)
+<p align="center">
+  <img src="images/catalyst_disabled.png" width="80%">
+  <br>
+  <em>Execution plan with Catalyst optimizer disabled (Sort-Merge Join).</em>
+</p>
 
 ---
 
@@ -187,8 +212,11 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 | Q4    | 31  | 34        | 33            |
 | Q5    | 29  | 36        | 33            |
 
-📊 Execution time comparison:  
-![Execution Times](images/execution_times.png)
+<p align="center">
+  <img src="images/execution_times.png" width="80%">
+  <br>
+  <em>Execution time comparison across RDD, SQL (CSV), and SQL (Parquet).</em>
+</p>
 
 #### 🔍 Observations
 - **RDD API:** Fastest overall, ideal for low-level transformations.  
@@ -201,8 +229,11 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 - **BroadcastHashJoin (enabled):** Automatically detects and broadcasts small datasets — highest performance.  
 - **SortMergeJoin (disabled):** Requires sorting and shuffling — slower for medium datasets.
 
-📊 Catalyst Join Comparison:  
-![Catalyst Comparison](images/catalyst_times.png)
+<p align="center">
+  <img src="images/catalyst_times.png" width="80%">
+  <br>
+  <em>Comparison of join strategies with Catalyst optimizer enabled vs disabled.</em>
+</p>
 
 ---
 
