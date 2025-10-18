@@ -116,21 +116,21 @@ The project implements **five analytical queries**, each executed using **RDD AP
 ```bash
 spark-submit queries/rdd_q1.py
 ```
-<p align="center"><strong>RDD Query Execution</strong></p>
+<p align="center"><strong>RDD Execution shown in Hadoop Job History UI.</strong></p>
 <p align="center"><img src="images/exec_rdd.png" width="80%"></p>
 
 **Spark SQL (Parquet):**
 ```bash
 spark-submit queries/df_q1.py
 ```
-<p align="center"><strong>Spark SQL (Parquet) Execution</strong></p>
+<p align="center"><strong>Execution of Spark SQL on Parquet.</strong></p>
 <p align="center"><img src="images/exec_sql_parquet.png" width="80%"></p>
 
 **Spark SQL (CSV):**
 ```bash
 spark-submit queries/df_csv_q1.py
 ```
-<p align="center"><strong>Spark SQL (CSV) Execution</strong></p>
+<p align="center"><strong>Execution of Spark SQL on CSV.</strong></p>
 <p align="center"><img src="images/exec_sql_csv.png" width="80%"></p>
 
 ---
@@ -144,7 +144,7 @@ Broadcasts the small `departments` dataset to all executors for efficient join.
 ```bash
 spark-submit joins/joins_broadcast_rdd.py
 ```
-<p align="center"><strong>Broadcast Join Results</strong></p>
+<p align="center"><strong>Broadcast join results for 50 and 100 rows.</strong></p>
 <p align="center">
   <img src="images/broadcast_join_50.png" width="48%" style="margin:4px; border-radius:8px;">
   <img src="images/broadcast_join_100.png" width="48%" style="margin:4px; border-radius:8px;">
@@ -155,7 +155,7 @@ Repartitions both datasets by department ID and joins using `cogroup`.
 ```bash
 spark-submit joins/joins_repartition_rdd.py
 ```
-<p align="center"><strong>Repartition Join Results</strong></p>
+<p align="center"><strong>Repartition join results for 50 and 100 rows.</strong></p>
 <p align="center">
   <img src="images/repartition_join_50.png" width="48%" style="margin:4px; border-radius:8px;">
   <img src="images/repartition_join_100.png" width="48%" style="margin:4px; border-radius:8px;">
@@ -168,10 +168,10 @@ Compares Catalyst’s **BroadcastHashJoin** (enabled) vs **SortMergeJoin** (disa
 spark-submit joins/join_broadcast_vs_sortmerge.py Y   # Disable broadcast
 spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 ```
-<p align="center"><strong>Catalyst Optimizer Enabled (Broadcast Hash Join)</strong></p>
+<p align="center"><strong>Execution plan with Catalyst optimizer enabled (Broadcast Hash Join).</strong></p>
 <p align="center"><img src="images/catalyst_enabled.png" width="80%"></p>
 
-<p align="center"><strong>Catalyst Optimizer Disabled (Sort-Merge Join)</strong></p>
+<p align="center"><strong>Execution plan with Catalyst optimizer disabled (Sort-Merge Join).</strong></p>
 <p align="center"><img src="images/catalyst_disabled.png" width="80%"></p>
 
 ---
