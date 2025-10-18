@@ -188,6 +188,7 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 | Q4    | 31  | 34        | 33            |
 | Q5    | 29  | 36        | 33            |
 
+<p align="center"><strong>Execution Time Comparison</strong></p>
 <p align="center"><img src="images/execution_times.png" width="80%"></p>
 
 #### 🔍 Observations
@@ -201,6 +202,7 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 - **BroadcastHashJoin (enabled):** Automatically detects and broadcasts small datasets — highest performance.  
 - **SortMergeJoin (disabled):** Requires sorting and shuffling — slower for medium datasets.
 
+<p align="center"><strong>Catalyst Optimizer Comparison</strong></p>
 <p align="center"><img src="images/catalyst_times.png" width="80%"></p>
 
 ---
