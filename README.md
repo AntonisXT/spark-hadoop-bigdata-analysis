@@ -14,7 +14,7 @@
 This project demonstrates how to design, implement, and analyze **large-scale data processing pipelines** using **Hadoop** and **Spark** on a distributed cluster.  
 It aims to compare the performance of different data representations, APIs, and join strategies within Spark.
 
-### 🔑 Key Features
+### ✨ Key Features
 - Distributed environment using **HDFS**, **YARN**, and **Spark 3.5.x**
 - Data ingestion pipeline (**CSV → Parquet**)
 - Comparative analysis of:
@@ -43,14 +43,14 @@ spark-hadoop-bigdata-analysis/
 
 ## ⚙️ Setup
 
-### 🧩 Environment
+### Environment
 Developed and tested on **Ubuntu-based Virtual Machines** configured with:
 - **Java 11**
 - **Hadoop 3.3.x** (HDFS + YARN + Job History Server)
 - **Spark 3.5.x** (running in YARN mode)
 - **Python 3.8+**
 
-### 🐍 Python Dependencies
+### Python Dependencies
 Defined in `requirements.txt`:
 ```txt
 pyspark>=3.5.0
@@ -63,7 +63,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-### 📦 Dataset
+### Dataset
 A subset of the **Common Crawl** dataset (WARC, WAT, WET) plus small relational datasets (**employees**, **departments**).
 
 Download and load into HDFS:
@@ -232,8 +232,7 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 
 ## 👤 Author
 
-**Antonis Tsiakiris**  
-🎓 Student | Big Data & AI Enthusiast  
+**Antonis Tsiakiris**   
 🔗 [LinkedIn](https://www.linkedin.com/in/antonis-tsiakiris-880114359)
 
 ---
