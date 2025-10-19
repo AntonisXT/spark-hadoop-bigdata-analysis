@@ -252,4 +252,4 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 ---
 
 ## 📜 License
-**MIT License**
+[MIT License](LICENSE) © 2025 [AntonisXT](https://github.com/AntonisXT)
