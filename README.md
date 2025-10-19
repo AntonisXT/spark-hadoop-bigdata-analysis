@@ -234,7 +234,7 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 The experimental results highlight several important observations regarding Spark’s performance and optimization behavior:
 
 - **Data Abstraction Layer:**  
-  The **RDD API** provides more granular control and slightly faster performance for transformation-heavy operations. However, the **DataFrame and Spark SQL APIs** offer higher-level abstractions, improved maintainability, and benefit from **automatic query optimization** via the Catalyst engine.
+  The **RDD API** provides more granular control and slightly faster performance for transformation-heavy operations. However, the **Spark SQL API** offer higher-level abstractions, improved maintainability, and benefit from **automatic query optimization** via the Catalyst engine.
 
 - **Storage Format Efficiency:**  
   The **Parquet** format consistently outperforms **CSV** due to its **columnar layout**, **compression**, and **schema-on-read** capabilities. These features minimize I/O operations and parsing overhead, making Parquet the preferred choice for analytical workloads.
