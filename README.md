@@ -250,7 +250,8 @@ The **Parquet** format consistently outperforms **CSV**, thanks to its **columna
 These reduce I/O and parsing overhead, making Parquet the preferred choice for analytical workloads.
 
 ### 🔹 Query Optimization (Catalyst Engine)
-The **Catalyst Optimizer** improves query plans by enabling **BroadcastHashJoins** for small datasets, achieving faster execution compared to Sort-Merge Joins.
+The **Catalyst Optimizer** improves query plans by enabling **BroadcastHashJoins** for small datasets,  
+achieving faster execution compared to Sort-Merge Joins.
 
 ### 🔹 Join Strategy Selection
 **Broadcast joins** are most efficient for smaller reference tables,  
