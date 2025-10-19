@@ -15,7 +15,7 @@ This repository presents an **academic research project** developed as part of t
 
 The project focuses on the **design, implementation, and performance evaluation** of distributed data processing pipelines using **Apache Spark** and **Apache Hadoop (HDFS)** within a real clustered environment.  
 
-Its primary objective is to **compare and analyze** how different **data processing approaches (RDDs and DataFrames)**, **storage formats (CSV and Parquet)**, and **join techniques** affect **execution speed, scalability, and resource efficiency** in Spark’s distributed engine.
+Its primary objective is to **compare and analyze** how different **data processing approaches (RDDs and DataFrames)**, **storage formats (CSV and Parquet)**, and **join techniques** affect **performance, scalability, and resource efficiency** in Spark’s distributed engine.
 
 Beyond performance benchmarking, the study provides an in-depth exploration of **Spark’s internal mechanisms** — including the **Catalyst Optimizer**, **query planning**, and **execution strategies** — to highlight how architectural and design choices affect real-world data processing outcomes.
 
@@ -242,7 +242,7 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 The experimental results highlight several important observations regarding Spark’s performance and optimization behavior:
 
 - **Data Abstraction Layer:**  
-  The **RDD API** provides more granular control and slightly faster performance for transformation-heavy operations. However, the **Spark SQL API** offer higher-level abstractions, improved maintainability, and benefit from **automatic query optimization** via the Catalyst engine.
+  The **RDD API** provides fine-grained control and slightly faster performance in transformation-heavy tasks. However, the **Spark SQL API** offers higher-level abstractions, improved maintainability, and benefit from **automatic query optimization** via the Catalyst engine.
 
 - **Storage Format Efficiency:**  
   The **Parquet** format consistently outperforms **CSV** due to its **columnar layout**, **compression**, and **schema-on-read** capabilities. These features minimize I/O operations and parsing overhead, making Parquet the preferred choice for analytical workloads.
@@ -254,7 +254,7 @@ The experimental results highlight several important observations regarding Spar
   When working with smaller reference datasets, **Broadcast joins** yield superior performance. For larger datasets that exceed the broadcast threshold, **Repartition joins** remain necessary but introduce additional shuffling overhead.
 
 - **Scalability & Resource Utilization:**  
-  Spark demonstrates excellent scalability across distributed nodes. However, **data skew** and improper **executor memory configuration** can significantly affect performance as the data volume grows.
+  Spark demonstrates strong scalability across distributed environments. However, **data skew** and improper **executor memory configuration** can significantly affect performance as the data volume grows.
 
 - **Overall Recommendation:**  
   The optimal setup combines **Spark SQL + Parquet + Catalyst Optimizer**, delivering the **best trade-off between performance, simplicity, and scalability** for most distributed analytical tasks.
