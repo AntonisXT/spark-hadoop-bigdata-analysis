@@ -11,8 +11,6 @@
 
 ## 🎯 Overview
 
-## 🌐 Overview
-
 This repository presents an **academic research project** developed as part of the university course on **Big Data Management Systems**.
 
 The project focuses on the **design, implementation, and performance evaluation** of distributed data processing pipelines using **Apache Spark** and **Apache Hadoop (HDFS)** within a real clustered environment.  
