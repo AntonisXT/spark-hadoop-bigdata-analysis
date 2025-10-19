@@ -24,13 +24,15 @@ Through systematic experimentation and analysis, this project aims to deepen the
 ---
 
 ## ✨ Key Features
-- Distributed environment using **HDFS**, **YARN**, and **Spark 3.5.x**
-- Data ingestion pipeline (**CSV → Parquet**)
-- Comparative analysis of:
-  - **RDD API vs Spark SQL / DataFrame API**
-  - **CSV vs Parquet storage formats**
-  - **Join strategies:** Broadcast, Repartition, and Catalyst Optimizer (BroadcastHashJoin vs SortMergeJoin)
-- Execution time visualizations and performance insights
+
+- Developed and tested in a **distributed computing environment** using **HDFS**, **YARN**, and **Apache Spark 3.5.x**
+- **Data ingestion and format conversion** from **CSV to Parquet** for efficient distributed querying
+- **Comparative performance analysis** across multiple dimensions:
+  - **Processing approach:** RDD API vs Spark SQL / DataFrame API  
+  - **Storage format:** CSV vs Parquet  
+  - **Join strategy:** Broadcast, Repartition, and Catalyst Optimizer (BroadcastHashJoin vs SortMergeJoin)
+- **Execution time measurements**, **visual comparisons**, and **performance insights**
+
 
 ---
 
