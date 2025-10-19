@@ -239,25 +239,43 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 
 ## 🧠 Insights & Discussion
 
-The experimental results highlight several important observations regarding Spark’s performance and optimization behavior:
+The experiments reveal several important insights into **Spark’s performance and optimization behavior**:
 
-- **Data Abstraction Layer:**  
-  The **RDD API** provides fine-grained control and slightly faster performance in transformation-heavy tasks. However, the **Spark SQL API** offers higher-level abstractions, improved maintainability, and benefit from **automatic query optimization** via the Catalyst engine.
+---
 
-- **Storage Format Efficiency:**  
-  The **Parquet** format consistently outperforms **CSV** due to its **columnar layout**, **compression**, and **schema-on-read** capabilities. These features minimize I/O operations and parsing overhead, making Parquet the preferred choice for analytical workloads.
+### 🔹 Data Processing Approach
+The **RDD API** provides fine-grained control and often achieves slightly faster results in transformation-heavy workloads.  
+However, the **Spark SQL API** offers better readability, maintainability, and benefits from **automatic query optimization** through the Catalyst engine.
 
-- **Query Optimization (Catalyst Engine):**  
-  The **Catalyst Optimizer** is a critical performance component. It automatically identifies opportunities to perform **BroadcastHashJoins**, which can reduce shuffling and execution time by up to **2×** compared to **Sort-Merge Joins**.
+---
 
-- **Join Strategy Selection:**  
-  When working with smaller reference datasets, **Broadcast joins** yield superior performance. For larger datasets that exceed the broadcast threshold, **Repartition joins** remain necessary but introduce additional shuffling overhead.
+### 🔹 Storage Format Efficiency
+The **Parquet** format consistently outperforms **CSV**, thanks to its **columnar storage**, **compression**, and **schema-on-read** features.  
+These reduce I/O and parsing overhead, making Parquet the preferred choice for analytical workloads.
 
-- **Scalability & Resource Utilization:**  
-  Spark demonstrates strong scalability across distributed environments. However, **data skew** and improper **executor memory configuration** can significantly affect performance as the data volume grows.
+---
 
-- **Overall Recommendation:**  
-  The optimal setup combines **Spark SQL + Parquet + Catalyst Optimizer**, delivering the **best trade-off between performance, simplicity, and scalability** for most distributed analytical tasks.
+### 🔹 Query Optimization (Catalyst Engine)
+The **Catalyst Optimizer** plays a central role in Spark’s performance.  
+It enables **BroadcastHashJoins** for small datasets, minimizing shuffling and improving join performance—often up to **2× faster** than Sort-Merge Joins.
+
+---
+
+### 🔹 Join Strategy Selection
+For small reference tables, **Broadcast joins** deliver the best performance.  
+When datasets are larger, **Repartition joins** are necessary, though they introduce additional shuffle and network overhead.
+
+---
+
+### 🔹 Scalability & Resource Utilization
+Spark demonstrates strong scalability across distributed environments.  
+Still, issues such as **data skew** or **unbalanced partitioning** can degrade performance, highlighting the importance of proper **cluster and memory tuning**.
+
+---
+
+### 🔹 Overall Observation
+The combination of **Spark SQL**, **Parquet**, and the **Catalyst Optimizer** provides the most balanced setup—offering an excellent trade-off between **performance**, **simplicity**, and **scalability** for distributed data analytics.
+
 
 ---
 
