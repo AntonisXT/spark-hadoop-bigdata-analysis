@@ -1,4 +1,4 @@
-# ⚡ Spark & Hadoop Big Data Processing
+# A Comparative Analysis of Distributed Data Processing using Apache Spark and Hadoop
 
 [![Apache Spark](https://img.shields.io/badge/Apache%20Spark-3.5.x-orange)]()
 [![Apache Hadoop](https://img.shields.io/badge/Apache%20Hadoop-3.3.x-yellow)]()
@@ -29,13 +29,16 @@ It aims to compare the performance of different data representations, APIs, and 
 
 ```
 spark-hadoop-bigdata-analysis/
-├── data_ingestion/          # CSV → Parquet converters
-├── queries/                 # RDD & SQL queries (CSV + Parquet)
+├── data_ingestion/          # CSV → Parquet conversion and upload to HDFS
+├── queries/                 
+│   ├── rdd/                 # Analytical queries using Spark RDDs
+│   ├── sparksql_csv/        # Analytical queries using Spark SQL on CSV data
+│   └── sparksql_parquet/    # Analytical queries using Spark SQL on Parquet data
 ├── joins/                   # Broadcast, Repartition, Catalyst ON/OFF
-├── visualizations/          # Execution time plots
-├── images/                  # Screenshots & charts for README
+├── visualizations/          # Performance plots and diagrams
+├── images/                  # Generated figures used in README
 ├── README.md
-├── output.md
+├── output.md                # Execution summary and results
 └── requirements.txt
 ```
 
@@ -78,6 +81,23 @@ hadoop fs -put warc.csv wat.csv wet.csv employees.csv departments.csv /home/user
 ---
 
 ## 🔄 CSV → Parquet Conversion
+
+The ingestion process consists of the following steps:
+
+1️⃣ **Load Data**\
+    Reads raw **CSV** files from the local filesystem or **HDFS**.
+
+2️⃣ **Apply Schema**\
+    Defines an explicit schema to ensure **data consistency** and
+correct data types.
+
+3️⃣ **Convert Format**\
+    Transforms the CSV files into **Parquet**, a columnar storage format
+optimized for analytics.
+
+4️⃣ **Store to HDFS**\
+    Saves the processed **Parquet files** back to **HDFS** for efficient
+distributed querying.
 
 Convert CSV datasets to **Parquet** and store them in HDFS:
 ```bash
