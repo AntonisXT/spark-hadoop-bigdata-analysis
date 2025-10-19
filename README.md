@@ -258,7 +258,7 @@ achieving faster execution compared to Sort-Merge Joins.
 while **Repartition joins** are needed for larger datasets that exceed broadcast limits.
 
 ### 🔹 Overall Observation
-The combination of **Spark SQL**, **Parquet**, and the **Catalyst Optimizer** provides the most balanced setup—offering an excellent trade-off between **performance**, **simplicity**, and **scalability** for distributed data analytics.
+The combination of **Spark SQL**, **Parquet**, and the **Catalyst Optimizer** provides the most balanced setup, offering an excellent trade-off between **performance**, **simplicity**, and **scalability** for distributed data analytics.
 
 ---
 
