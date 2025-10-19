@@ -9,10 +9,19 @@
 
 ---
 
-## 🎯 Objective
+## 🎯 Overview
 
-This project showcases the design, implementation, and performance evaluation of large-scale data processing pipelines built on Apache Hadoop and Apache Spark within a distributed computing environment.  
-The main goal is to compare and analyze how different data representations, API layers, and join strategies affect performance, scalability, and efficiency across Spark’s execution engine.
+## 🌐 Overview
+
+This repository presents an **academic research project** developed as part of the university course on **Big Data Management Systems**.
+
+The project focuses on the **design, implementation, and performance evaluation** of distributed data processing pipelines using **Apache Spark** and **Apache Hadoop (HDFS)** within a real clustered environment.  
+
+Its primary objective is to **compare and analyze** how different **data processing approaches (RDDs and DataFrames)**, **storage formats (CSV and Parquet)**, and **join techniques** affect **execution speed, scalability, and resource efficiency** in Spark’s distributed engine.
+
+Beyond performance benchmarking, the study provides an in-depth exploration of **Spark’s internal mechanisms** — including the **Catalyst Optimizer**, **query planning**, and **execution strategies** — to highlight how architectural and design choices affect real-world data processing outcomes.
+
+Through systematic experimentation and analysis, this project aims to deepen the understanding of **distributed data analytics optimization** and provide useful observations on how open-source Big Data frameworks can be effectively utilized for **scalable and efficient data processing**.
 
 ---
 
