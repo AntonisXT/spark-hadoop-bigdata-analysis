@@ -19,8 +19,6 @@ Its primary objective is to **compare and analyze** how different **data process
 
 Beyond performance benchmarking, the study provides an in-depth exploration of **Spark’s internal mechanisms** — including the **Catalyst Optimizer**, **query planning**, and **execution strategies** — to highlight how architectural and design choices affect real-world data processing outcomes.
 
-Through systematic experimentation and analysis, this project aims to deepen the understanding of **distributed data analytics optimization** and provide useful observations on how open-source Big Data frameworks can be effectively utilized for **scalable and efficient data processing**.
-
 ---
 
 ## ✨ Key Features
