@@ -14,6 +14,8 @@
 This project showcases the design, implementation, and performance evaluation of large-scale data processing pipelines built on Apache Hadoop and Apache Spark within a distributed computing environment.  
 The main goal is to compare and analyze how different data representations, API layers, and join strategies affect performance, scalability, and efficiency across Spark’s execution engine.
 
+---
+
 ## ✨ Key Features
 - Distributed environment using **HDFS**, **YARN**, and **Spark 3.5.x**
 - Data ingestion pipeline (**CSV → Parquet**)
