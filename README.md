@@ -11,15 +11,15 @@
 
 ## 🎯 Objective
 
-This project demonstrates how to design, implement, and analyze **large-scale data processing pipelines** using **Hadoop** and **Spark** on a distributed cluster.  
-It aims to compare the performance of different data representations, APIs, and join strategies within Spark.
+This project showcases the design, implementation, and performance evaluation of large-scale data processing pipelines built on Apache Hadoop and Apache Spark within a distributed computing environment.
+The main goal is to compare and analyze how different data representations, API layers, and join strategies affect performance, scalability, and efficiency across Spark’s execution engine.
 
 ### ✨ Key Features
 - Distributed environment using **HDFS**, **YARN**, and **Spark 3.5.x**
 - Data ingestion pipeline (**CSV → Parquet**)
 - Comparative analysis of:
-  - **RDD API vs Spark SQL / DataFrames**
-  - **CSV vs Parquet performance**
+  - **RDD API vs Spark SQL / DataFrame API**
+  - **CSV vs Parquet storage formats**
   - **Join strategies:** Broadcast, Repartition, and Catalyst Optimizer (BroadcastHashJoin vs SortMergeJoin)
 - Execution time visualizations and performance insights
 
@@ -99,7 +99,7 @@ optimized for analytics.
     Saves the processed **Parquet files** back to **HDFS** for efficient
 distributed querying.
 
-Convert CSV datasets to **Parquet** and store them in HDFS:
+You can execute the ingestion scripts as follows:
 ```bash
 spark-submit data_ingestion/warc_parquet.py
 spark-submit data_ingestion/wat_parquet.py
