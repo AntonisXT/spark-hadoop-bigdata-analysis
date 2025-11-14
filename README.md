@@ -271,7 +271,7 @@ The combination of **Spark SQL**, **Parquet**, and the **Catalyst Optimizer** pr
 ## 👤 Author
 
 **Antonis Tsiakiris**   
-🔗 [LinkedIn](https://www.linkedin.com/in/antonis-tsiakiris-880114359)
+🔗 [LinkedIn](www.linkedin.com/in/antonios-tsiakiris)
 
 ---
 
