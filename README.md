@@ -5,7 +5,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)]()
 
-> A distributed data processing and performance analysis project using **Apache Spark** and **Apache Hadoop (HDFS)** — implemented as part of an academic assignment on Big Data systems.
+> A distributed data processing and performance analysis project using **Apache Spark** and **Apache Hadoop (HDFS)** - implemented as part of an academic assignment on Big Data systems.
 
 ---
 
@@ -17,7 +17,7 @@ The project focuses on the **design, implementation, and performance evaluation*
 
 Its primary objective is to **compare and analyze** how different **data processing approaches (RDDs and DataFrames)**, **storage formats (CSV and Parquet)**, and **join techniques** affect **performance, scalability, and resource efficiency** in Spark’s distributed engine.
 
-Beyond performance benchmarking, the study provides an in-depth exploration of **Spark’s internal mechanisms** — including the **Catalyst Optimizer**, **query planning**, and **execution strategies** — to highlight how architectural and design choices affect real-world data processing outcomes.
+Beyond performance benchmarking, the study provides an in-depth exploration of **Spark’s internal mechanisms** - including the **Catalyst Optimizer**, **query planning**, and **execution strategies** - to highlight how architectural and design choices affect real-world data processing outcomes.
 
 ---
 
@@ -227,8 +227,8 @@ spark-submit joins/join_broadcast_vs_sortmerge.py N   # Enable broadcast
 ---
 
 ### ⚙️ Catalyst Optimizer Impact
-- **BroadcastHashJoin (enabled):** Automatically detects and broadcasts small datasets — highest performance.  
-- **SortMergeJoin (disabled):** Requires sorting and shuffling — slower for medium datasets.
+- **BroadcastHashJoin (enabled):** Automatically detects and broadcasts small datasets - highest performance.  
+- **SortMergeJoin (disabled):** Requires sorting and shuffling - slower for medium datasets.
 
 <p align="center"><strong>Catalyst Optimizer Comparison</strong></p>
 <p align="center"><img src="images/catalyst_times.png" width="80%"></p>
