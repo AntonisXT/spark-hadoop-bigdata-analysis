@@ -75,7 +75,13 @@ pip install -r requirements.txt
 ```
 
 ### Dataset
-A subset of the **Common Crawl** dataset (WARC, WAT, WET) plus small relational datasets (**employees**, **departments**).
+The project utilizes a subset of the **Common Crawl** dataset (WARC, WAT, WET) alongside small relational datasets (**employees**, **departments**). 
+
+**Dataset Details & Cluster Configuration:**
+- **Total Size:** ~1.1 GB of uncompressed CSV data.
+- **Main Files:** `warc.csv` (~429MB) and `wet.csv` (~630MB).
+- **HDFS Setup:** 64 MB Block Size | Replication Factor: 2.
+- **Objective:** This specific volume and setup force distributed storage and parallel processing, providing a realistic baseline for evaluating Spark's I/O bottlenecks and the advantages of the Parquet format.
 
 Download and load into HDFS:
 ```bash
